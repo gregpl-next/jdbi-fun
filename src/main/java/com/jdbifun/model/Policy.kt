@@ -44,7 +44,7 @@ data class Policy(
 enum class LOB(val stableId: String) {
   GL("GL"),
   PL("PL"),
-  WC("WC"),
+  WCv1("WC"),
   ;
 
   companion object {
