@@ -4,6 +4,9 @@ import com.jdbifun.dao.impl.PolicyHibernateDao
 import com.jdbifun.dao.impl.PolicyJdbcDao
 import com.jdbifun.dao.impl.PolicyJdbiFluentApiDao
 import com.jdbifun.dao.impl.PolicyJdbiObjectSqlDao
+import com.jdbifun.dao.impl.PolicyJdbiObjectSqlDaoV2
+import com.jdbifun.dao.impl.PolicyJdbiObjectSqlDaoV3
+import com.jdbifun.dao.impl.PolicyJdbiObjectSqlDaoV4
 import com.jdbifun.model.LOB
 import com.jdbifun.model.Policy
 import com.nhaarman.expect.expect
@@ -64,6 +67,9 @@ internal class PolicyDaoTest {
           PolicyJdbcDao{ generateDbConnection() },
           PolicyJdbiFluentApiDao(jdbi),
           jdbi.onDemand(PolicyJdbiObjectSqlDao::class.java),
+          jdbi.onDemand(PolicyJdbiObjectSqlDaoV2::class.java),
+          jdbi.onDemand(PolicyJdbiObjectSqlDaoV3::class.java),
+          jdbi.onDemand(PolicyJdbiObjectSqlDaoV4::class.java),
           PolicyHibernateDao(sessionFactory),
       )
       return daos
